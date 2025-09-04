@@ -1,3 +1,4 @@
+import pathlib as pl
 import json
 import logging
 import sys
@@ -14,9 +15,9 @@ def lambda_handler(event, context):
     
     try:
         body = parse_request_body(event)
-        
+        content = pl.Path('test').read_text()
         response_data = {
-            "message": "Hello again from the resume-lambda Lambda!",
+            "message": f"Hello again from the resume-lambda Lambda! Here even more {content=}",
             "event": body,
             "statusCode": 200
         }
