@@ -1,0 +1,68 @@
+# Default values for resume-lambda
+# This is a YAML-formatted file.
+
+# Project configuration
+project_name: "resume-lambda"
+environment: "development"
+
+# API Gateway configuration
+apiGatewayUrl: "https://your-api-gateway.amazonaws.com/prod"
+
+# General Lambda
+lambda:
+  env: []
+  # Add environment variables as needed
+  # env:
+  #   - name: DEBUG
+  #     value: "true"
+  selectorLabels:
+    app: "resume-lambda"
+    service: "resume-lambda-lambda"
+  name: "resume-lambda-lambda"
+  image:
+    name: "resume-lambda-lambda"
+    tag: "latest"
+    pullPolicy: "IfNotPresent"
+  replicas: 1
+  resources:
+    limits:
+      cpu: "500m"
+      memory: "512Mi"
+    requests:
+      cpu: "250m"
+      memory: "256Mi"
+  serviceType: "ClusterIP"
+  port: 8080
+  portName: http
+  protocol: "TCP"
+  debug:
+    enabled: false
+    port: 5678
+    portName: debug
+    protocol: "TCP"
+
+interface:
+  env: []
+  # Add environment variables as needed
+  # env:
+  #   - name: DEBUG
+  #     value: "true"
+  name: "resume-lambda-interface"
+  image:
+    name: "resume-lambda-interface"
+    tag: "latest"
+    pullPolicy: "IfNotPresent"
+  replicas: 1
+  resources:
+    limits:
+      cpu: "500m"
+      memory: "512Mi"
+    requests:
+      cpu: "250m"
+      memory: "256Mi"
+  selectorLabels:
+    app: "resume-lambda"
+    service: "resume-lambda-interface"
+  port: 80
+  portName: http
+  protocol: "TCP"

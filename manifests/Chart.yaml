@@ -1,0 +1,16 @@
+apiVersion: v2
+name: resume-lambda
+description: A Helm chart for deploying Lambda services
+type: application
+version: 0.1.0
+appVersion: "1.0.0"
+keywords:
+  - lambda
+  - aws
+  - serverless
+home: https://github.com/marcstreeter//resume-lambda/
+sources:
+  - https://github.com/marcstreeter//resume-lambda/
+maintainers:
+  - name: Marc Streeter
+    email: mstreeter@gmail.com 

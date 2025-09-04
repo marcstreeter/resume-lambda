@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "resume-lambda"
+version = "0.1.0"
+description = "A lambda function for resume-lambda by marcstreeterdev"
+authors = ["Marc Streeter <mstreeter@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+anthropic = "^0.64.0"
+httpx = "^0.28.1"
+openai = "^1.99.9"
+pypdf = "^6.0.0"
+
+[tool.poetry.group.dev.dependencies]
+aws-lambda-typing = "^2.20.0"
+debugpy = "1.8.16"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

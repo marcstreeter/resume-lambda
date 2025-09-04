@@ -1,0 +1,36 @@
+openapi: 3.0.0
+info:
+  title: Lambda Test API
+  version: 1.0.0
+servers:
+  - url: http://localhost:18070
+    description: Local API endpoint
+  - url: ${API_GATEWAY_URL}
+    description: Production API endpoint
+paths:
+  /2015-03-31/functions/function/invocations:
+    post:
+      summary: Submit RSVP
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                rsvp_total:
+                  type: integer
+                  maximum: 10
+                rsvp_name:
+                  type: string
+              required:
+                - rsvp_total
+                - rsvp_name
+            examples:
+              valid:
+                value:
+                  rsvp_total: 2
+                  rsvp_name: From Scalar With Love
+              invalid:
+                value:
+                  rsvp_total: 20
+                  rsvp_name: This will fail
